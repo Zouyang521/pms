@@ -1,6 +1,8 @@
 package com.zy.pms.dao;
 
-import com.zy.pms.model.Users;
+
+
+import com.zy.pms.mbg.model.Users;
 
 import java.util.List;
 

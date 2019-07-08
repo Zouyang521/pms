@@ -2,7 +2,8 @@ package com.zy.pms.controller;
 
 import com.zy.pms.dao.UsersDao;
 import com.zy.pms.dto.PmsAdminLoginParam;
-import com.zy.pms.model.Users;
+
+import com.zy.pms.mbg.model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestBody;

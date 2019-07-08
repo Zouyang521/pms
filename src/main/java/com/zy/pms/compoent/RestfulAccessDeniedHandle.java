@@ -2,8 +2,10 @@ package com.zy.pms.compoent;
 
 import cn.hutool.json.JSONUtil;
 import com.zy.pms.dto.CommonResult;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +16,7 @@ import java.io.IOException;
  * @author zy
  * @date 2019/6/18 15:43
  */
+@Component
 public class RestfulAccessDeniedHandle implements AccessDeniedHandler {
     @Override
     public void handle(HttpServletRequest request,

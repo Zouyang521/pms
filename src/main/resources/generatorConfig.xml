@@ -23,18 +23,18 @@
     </jdbcConnection>
 
     <!--指定生成model的路径-->
-    <javaModelGenerator targetPackage="com.zy.pms.model"
-                        targetProject="D:\pms\src\main\java"/>
+    <javaModelGenerator targetPackage="com.zy.pms.mbg.model"
+                        targetProject="D:\IdeaProjects\pms\src\main\java"/>
 
     <!--指定生成mapper.xml的路径-->
     <sqlMapGenerator targetPackage="com.zy.pms.mbg.mapper"
-                     targetProject="D:\pms\src\main\resources"/>
+                     targetProject="D:\IdeaProjects\pms\src\main\resources"/>
 
     <!--指定生成mapper接口的路径-->
     <javaClientGenerator type="XMLMAPPER"
                          targetPackage="com.zy.pms.mbg.mapper"
-                         targetProject="D:\pms\src\main\java"/>
-    <table tableName="pms_yldata">
+                         targetProject="D:\IdeaProjects\pms\src\main\java"/>
+    <table tableName="users">
       <generatedKey column="id" sqlStatement="MySql" identity="true"/>
     </table>
   </context>
