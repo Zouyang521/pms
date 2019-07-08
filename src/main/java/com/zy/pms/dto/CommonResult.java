@@ -1,67 +1,56 @@
 package com.zy.pms.dto;
 
-import com.zy.pms.util.JsonUtil;
-
 /**
+ * 通用返回对象
  * @author zy
  * @date 2019/4/19 15:44
  */
-public class CommonResult {
-    //操作成功
-    public static final int SUCCESS = 200;
-    //操作失败
-    public static final int FAILED = 500;
-    //校验参数失败
-    public static final int VALIDATE_FAILED = 404;
-    //未认证
-    public static final int UNAUTHORZED = 401;
-    //未授权
-    public static final int FORBIDDEN = 403;
-
-    private int code;
+public class CommonResult<T> {
+    private long code;
     private String message;
-    private Object data;
+    private T data;
 
-    /**
-     * 普通成功返回
-     * @param data 获取的数据
-     * @return
-     */
-    public CommonResult success(Object data){
-        this.code = SUCCESS;
-        this.message = "操作成功,哈哈";
+    protected CommonResult(){}
+
+    protected CommonResult(long code,String message,T data)
+    {
         this.data = data;
-        return this;
-    }
-
-    /**
-     * 普通失败返回
-     * @param data 获取的数据
-     * @return
-     */
-    public CommonResult failed(Object data){
-        this.code = FAILED;
-        this.message = "操作失败啦";
-
-        return this;
-    }
-
-    /**
-     * 参数验证失败
-     * @param
-     * @return
-     */
-    public CommonResult validateFailed(String message){
-        this.code = VALIDATE_FAILED;
+        this.code = code;
         this.message = message;
-        return  this;
     }
 
-    public int getCode() {
+    public static <T> CommonResult<T> success(T data){
+        return new CommonResult<T>(ResultCode.SUCCESS.getCode(),ResultCode.SUCCESS.getMessage(),data);
+    }
+
+    public static <T> CommonResult<T> success(T data,String message){
+        return new CommonResult<T>(ResultCode.SUCCESS.getCode(),message,data);
+    }
+
+    /**
+     * 未授权返回结果
+     * @param data
+     * @param <T>
+     * @return
+     */
+    public static <T> CommonResult<T> forbidden(T data){
+        return new CommonResult<T>(ResultCode.FORBIDDEN.getCode(),
+                ResultCode.FORBIDDEN.getMessage(),data);
+    }
+
+    /**
+     * 未登录返回结果
+     * @return
+     */
+    public static <T> CommonResult<T> unauthorized(T data){
+        return new CommonResult<T>(ResultCode.UNAUTHORIZED.getCode(),
+                ResultCode.UNAUTHORIZED.getMessage(),data);
+    }
+    public long getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(long code) {
         this.code = code;
     }
 
@@ -73,16 +62,11 @@ public class CommonResult {
         this.message = message;
     }
 
-    public Object getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(T data) {
         this.data = data;
-    }
-
-    @Override
-    public String toString() {
-        return JsonUtil.objectToJson(this);
     }
 }
