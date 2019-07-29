@@ -19,5 +19,5 @@ public interface UsersDao {
 
     int updateByPrimaryKey(Users record);
 
-    List<Users> listUsers();
+    //List<Users> listUsers();
 }

@@ -39,6 +39,14 @@ public class CommonResult<T> {
     }
 
     /**
+     * 参数验证失败
+     * @param <T>
+     * @return
+     */
+    public static <T> CommonResult<T> validateFailed(String message){
+        return new CommonResult<T>(ResultCode.VALIDATE_FAILED.getCode(),message,null);
+    }
+    /**
      * 未登录返回结果
      * @return
      */
